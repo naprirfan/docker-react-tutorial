@@ -6,5 +6,8 @@ COPY . .
 RUN npm run build
 
 FROM nginx
+
+# So that elastic beanstalk deployment expose this port to the outside world
+EXPOSE 80
 COPY --from=builder /app/build /usr/share/nginx/html
 
